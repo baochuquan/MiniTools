@@ -16,9 +16,12 @@ function _git_is_ancestor()
 }
 
 _RELATION=`_git_is_ancestor $_REMOTE_COMMIT $_CURRENT_COMMIT`
-
-if [[ $_RELATION == "ancestor" ]];then
-  echo "Need update"
+if [[ $_REMOTE_COMMIT == $_CURRENT_COMMIT ]];then
+  echo "Same Commit, do not need to update..."
+elif [[ $_RELATION == "ancestor" ]];then
+  echo "Need to update"
+elif [[ $_RELATION == "descendant" ]];then
+  echo "Descendant, do not need to update..."
+else
+  echo "Unrelated"
 fi
-
-
