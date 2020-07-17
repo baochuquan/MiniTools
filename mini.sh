@@ -14,19 +14,15 @@ function _mini_usage() {
   echo ""
 }
 
-function mini() {
-  if [ $# -eq 0 ]; then
-    _mini_usage;
-    exit 1
-  fi
+if [ $# -eq 0 ]; then
+  _mini_usage;
+  exit 1
+fi
 
-  while getopts "i:b:" OPT; do
-    case $OPT in
-      i) echo "INIT";;
-      b) TEST2="$OPTARG";;
-      ?) _mini_usage;;
-    esac 
-  done
-}
-
-mini $*
+while getopts "i:b:" OPT; do
+  case $OPT in
+    i) echo "INIT";;
+    b) TEST2="$OPTARG";;
+    ?) _mini_usage;;
+  esac 
+done
