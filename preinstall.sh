@@ -8,5 +8,4 @@ if brew list | grep "bash-completion"; then
 else 
   echo "Installing bash-completion"
   brew install bash-completion && echo "[[ -r \"/usr/local/etc/profile.d/bash_completion.sh\" ]] && . \"/usr/local/etc/profile.d/bash_completion.sh\"" >> ~/.zshrc
-  source ~/.zshrc
 fi 
