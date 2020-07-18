@@ -33,6 +33,7 @@ echo "# MiniTools configurations" >> ~/.zshrc
 echo "autoload bashcompinit" >> ~/.zshrc
 echo "bashcompinit" >> ~/.zshrc
 echo "source $_CURRENT_ROOT/base/completion.bash" >> ~/.zshrc
+source ~/.zshrc
 
 echo "========================================="
 echo "                  LOGO                   "
