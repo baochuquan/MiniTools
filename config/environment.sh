@@ -26,9 +26,9 @@ subcmds="
   $subcmd_build
   $subcmd_review
   $subcmd_tools
-  "
+"
 
- config_options="
+config_options="
   $config_option_change_name
 "
 setup_options="

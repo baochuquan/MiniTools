@@ -22,28 +22,84 @@ function _subcmd_dispatch_of_config() {
   case $1 in
     $config_option_change_name)
       shift
+      echo "$*"
       ;;
-   *)
+    *)
+      _mini_usage
+      ;;
   esac
 }
 
 function _subcmd_dispatch_of_setup() {
-  echo "$*" 
+  echo "setup"
+  case $1 in
+    $setup_option_ios_env)
+      shift
+      echo "$*"
+      ;;
+    $setup_option_ios_proj)
+      shift
+      echo "$*"
+      ;;
+    *)
+      _mini_usage
+      ;;
+  esac
 }
 
 function _subcmd_dispatch_of_build() {
   echo "build"
-  echo "$*" 
+  case $1 in
+    $build_option_ios_bugly)
+      shift
+      echo "$*"
+      ;;
+    $build_option_ios_jenkins)
+      shift
+      echo "$*"
+      ;;
+    $build_option_ios_build)
+      shift
+      echo "$*"
+      ;;
+    *)
+      _mini_usage
+      ;;
+  esac
 }
 
 function _subcmd_dispatch_of_review() {
   echo "review"
-  echo "$*" 
+  case $1 in
+    $review_option_submit_gerrit)
+      shift
+      echo "$*"
+      ;;
+    $review_option_init_git)
+      shift
+      echo "$*"
+      ;;
+    *)
+      _mini_usage
+      ;;
+  esac
 }
 
 function _subcmd_dispatch_of_tools() {
   echo "tools"
-  echo "$*" 
+  case $1 in
+    $tools_option_convert_color)
+      shift
+      echo "$*"
+      ;;
+    $tools_option_convert_time)
+      shift
+      echo "$*"
+      ;;
+    *)
+      _mini_usage
+      ;;
+  esac
 }
 
 # Main Dispatch
