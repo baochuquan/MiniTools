@@ -5,6 +5,8 @@ if [ -e .config ]; then
   exit 0
 fi
 
+MINI_ROOT=`pwd`
+
 _DEFAULT="mini"
 _NAME=$_DEFAULT
 
@@ -25,14 +27,20 @@ fi
 
 _TARGET="/usr/local/bin/${_NAME}"
 echo "$_NAME" > .config
-install ./mini.sh $_TARGET
+ln -s $MINI_ROOT/mini.sh $_TARGET
 
-_CURRENT_ROOT=`pwd`
 #ln -s ./bash/comletion.bash 
 echo "# MiniTools configurations" >> ~/.zshrc
-#echo "autoload bashcompinit" >> ~/.zshrc
-#echo "bashcompinit" >> ~/.zshrc
-echo "source $_CURRENT_ROOT/base/completion.bash" >> ~/.zshrc
+echo "export MINI_ROOT=\"$MINI_ROOT\"" >> ~/.zshrc
+echo "autoload bashcompinit" >> ~/.zshrc
+echo "bashcompinit" >> ~/.zshrc
+echo "source $MINI_ROOT/config/completion.bash" >> ~/.zshrc
+#
+
+#_FPATH="".${_NAME}path""
+#mkdir $HOME/$_FPATH
+#echo "$fpath"
+#echo "fpath=($HOME/$_FPATH \$fpath)" >> ~/.zshrc
 
 echo "========================================="
 echo "                  LOGO                   "

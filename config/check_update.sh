@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 _REMOTE_URL=`git ls-remote --get-url origin`
 _REMOTE_COMMIT=`git ls-remote ${_REMOTE_URL} HEAD | xargs -n 1 | head -n 1`
