@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export HOMEBREW_NO_AUTO_UPDATE=1
 _INSTALLED_BREWS=`brew list`
 
 if brew list | grep "bash-completion"; then 
