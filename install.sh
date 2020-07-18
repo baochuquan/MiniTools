@@ -28,6 +28,7 @@ echo "$_NAME" > .config
 install ./mini.sh $_TARGET
 
 _CURRENT_ROOT=`pwd`
+#ln -s ./bash/comletion.bash 
 echo "# MiniTools configurations" >> ~/.zshrc
 echo "autoload bashcompinit" >> ~/.zshrc
 echo "bashcompinit" >> ~/.zshrc
@@ -38,4 +39,4 @@ echo "                  LOGO                   "
 echo "========================================="
 echo "$_NAME installed successfully!"
 
-
+#
