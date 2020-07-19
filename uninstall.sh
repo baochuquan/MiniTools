@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [ ! -e .config ]; then
-  echo "mini has not installed"
+if [ ! -e .minirc ]; then
+  echo "mini is not installed"
   exit 0
 fi
 
-_NAME=`cat .config`
-_TARGET="/usr/local/bin/${_NAME}"
+_TARGET="/usr/local/bin/$MINI_NAME"
 rm $_TARGET
-rm .config
-echo "Uninstall $_NAME successfully!"
+rm .minirc
+sed -i '' '/.minirc/d' ~/.zshrc
+echo "Uninstall $MINI_NAME successfully!"
 

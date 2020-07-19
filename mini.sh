@@ -1,105 +1,38 @@
 #!/bin/bash
 
-source $MINI_ROOT/config/environment.sh
+source $MINI_ROOT/common/environment.sh
+source $MINI_ROOT/build/dispatch_build.sh
+source $MINI_ROOT/config/dispatch_config.sh
+source $MINI_ROOT/review/dispatch_review.sh
+source $MINI_ROOT/setup/dispatch_setup.sh
+source $MINI_ROOT/tools/dispatch_tools.sh
+
 
 function _mini_usage() {
-  echo "usage: mini [--help]"
+  echo "Usage:"
+  echo "     $MINI_NAME [--help]"
   echo "            <command> [<args>]"
   echo ""
-  echo "These are common Mini commands used in various situations:"
+  echo "These are common $MINI_NAME commands used in various situations:"
   echo ""
-  echo "start a iOS environment"
-  echo "   setup"
+  echo "Build a iOS project related"
+  echo "    build"
   echo ""
-  echo "'mini help -a' and 'mini help -g' list available subcommands and some
-  concept guides."
+  echo "Settings of MiniTools"
+  echo "    config"
   echo ""
-}
-
-# Subcmd Dispatch
-function _subcmd_dispatch_of_config() {
-  echo "config"
-  case $1 in
-    $config_option_change_name)
-      shift
-      echo "$*"
-      ;;
-    *)
-      _mini_usage
-      ;;
-  esac
-}
-
-function _subcmd_dispatch_of_setup() {
-  echo "setup"
-  case $1 in
-    $setup_option_ios_env)
-      shift
-      echo "$*"
-      ;;
-    $setup_option_ios_proj)
-      shift
-      echo "$*"
-      ;;
-    *)
-      _mini_usage
-      ;;
-  esac
-}
-
-function _subcmd_dispatch_of_build() {
-  echo "build"
-  case $1 in
-    $build_option_ios_bugly)
-      shift
-      echo "$*"
-      ;;
-    $build_option_ios_jenkins)
-      shift
-      echo "$*"
-      ;;
-    $build_option_ios_build)
-      shift
-      echo "$*"
-      ;;
-    *)
-      _mini_usage
-      ;;
-  esac
-}
-
-function _subcmd_dispatch_of_review() {
-  echo "review"
-  case $1 in
-    $review_option_submit_gerrit)
-      shift
-      echo "$*"
-      ;;
-    $review_option_init_git)
-      shift
-      echo "$*"
-      ;;
-    *)
-      _mini_usage
-      ;;
-  esac
-}
-
-function _subcmd_dispatch_of_tools() {
-  echo "tools"
-  case $1 in
-    $tools_option_convert_color)
-      shift
-      echo "$*"
-      ;;
-    $tools_option_convert_time)
-      shift
-      echo "$*"
-      ;;
-    *)
-      _mini_usage
-      ;;
-  esac
+  echo "Code review related"
+  echo "    review"
+  echo ""
+  echo "Start from scratch for an iOS project"
+  echo "    setup"
+  echo ""
+  echo "Messy up tools"
+  echo "    tools"
+  echo ""
+  echo "'$MINI_NAME help -a' and '$MINI_NAME help -g' list available subcommands and some concept guides."
+  echo ""
+  exit 1
 }
 
 # Main Dispatch
@@ -107,23 +40,23 @@ function _main_dispatch() {
   case $1 in
     $subcmd_config)
       shift
-      _subcmd_dispatch_of_config $*
+      subcmd_dispatch_of_config $*
       ;;
     $subcmd_setup)
       shift
-      _subcmd_dispatch_of_setup $*
+      subcmd_dispatch_of_setup $*
       ;;
     $subcmd_build)
       shift
-      _subcmd_dispatch_of_build $*
+      subcmd_dispatch_of_build $*
       ;;
     $subcmd_review)
       shift
-      _subcmd_dispatch_of_review $*
+      subcmd_dispatch_of_review $*
       ;;
     $subcmd_tools)
       shift
-      _subcmd_dispatch_of_tools $*
+      subcmd_dispatch_of_tools $*
       ;;
     *)
       _mini_usage

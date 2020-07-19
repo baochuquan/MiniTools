@@ -1,13 +1,69 @@
 #!/usr/bin/env bash
 
-source $MINI_ROOT/config/environment.sh
+source $MINI_ROOT/common/environment.sh
 
 _mini_completions() {
-  local pre cur
+  local pre cur length
   COMPREPLY=()
   pre=${COMP_WORDS[COMP_CWORD - 1]}
   cur=${COMP_WORDS[COMP_CWORD]}
+  length=${#COMP_WORDS[@]}
+
+  # select suboptions for options
+  case "$pre" in
+    # config --change-name
+    $config_option_change_name)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # setup --ios-env
+    $setup_option_ios_env)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # setup --ios-proj
+    $setup_option_ios_proj)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # build --ios-bugly
+    $setup_option_ios_proj)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # setup --ios-jenkins
+    $setup_option_ios_proj)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # setup --ios-build
+    $setup_option_ios_proj)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # review --submit-gerrit
+    $review_option_submit_gerrit)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # review --init-git
+    $review_option_init_git)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+    # tools --convert-time
+    $tools_option_convert_time)
+      COMPREPLY=($(compgen -W "$convert_time_subopts" -- $cur))
+      return 0
+      ;;
+    # tools --convert-color
+    $tools_option_convert_color)
+      COMPREPLY=($(compgen -A file))
+      return 0
+      ;;
+  esac
   
+  # select options for subcmd
   case "$pre" in
     $subcmd_config)
       COMPREPLY=($(compgen -W "$config_options" -- $cur))
@@ -31,7 +87,13 @@ _mini_completions() {
       ;;
   esac
   
-  COMPREPLY=($(compgen -W "$subcmds" -- $cur))
+  # select subcmds for mini
+  case "$pre" in
+    $MINI_NAME)
+      COMPREPLY=($(compgen -W "$subcmds" -- $cur))
+      return 0
+      ;;
+  esac
 }
 
 _testa() {
@@ -80,7 +142,7 @@ _testb() {
   esac
 }
 
-_pandoc() {
+_testc() {
     local pre cur
 
     COMPREPLY=()
@@ -136,5 +198,5 @@ _pandoc() {
         COMPREPLY=( $( compgen -A file ))
     esac
 }
-#complete -F _pandoc pandoc
-complete -F _mini_completions mini
+
+complete -F _mini_completions $MINI_NAME
