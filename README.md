@@ -20,7 +20,7 @@
 $ ./preinstall.sh
 ```
 
-然后，执行 `install.sh` 脚本一键安装。
+然后，执行 `install.sh` 脚本一键安装。默认使用 `mini` 作为根命名，用户可以选择自定义一个名称。
 ```shell
 $ ./install.sh
 ```
