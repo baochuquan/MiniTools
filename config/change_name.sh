@@ -45,7 +45,7 @@ function change_name() {
   echo ""
   show_logo
   echo ""
-  echo -e "\033[32mchange name successful!\033[0m"
+  echo -e "\033[32 name changed to '$MINI_NAME' successfully!\033[0m"
   echo ""
   echo "please relaunch your z-shell or execute the following command:"
   echo "     source ~/.zshrc"
