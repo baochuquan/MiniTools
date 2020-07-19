@@ -9,7 +9,18 @@
 
 
 # MiniTools
+一个 Shell 工具箱，默认会集成一个 `mini`
+命令，根据不同的子命令和选项，执行不同的脚本。
 
 # Installation
+默认，用户已经安装 Homebrew，如果没有安装，请自行安装。
 
-需要先安装 Homebrew.
+首先，在项目根目录下执行 `preinstall.sh` 脚本，从而安装依赖包。
+```shell
+$ ./preinstall.sh
+```
+
+然后，执行 `install.sh` 脚本一键安装。
+```shell
+$ ./install.sh
+```
